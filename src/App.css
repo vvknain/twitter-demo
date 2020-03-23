@@ -13,9 +13,76 @@
   }
 }
 
+.nav-header {
+  /* background-color: #00acee; */
+  min-height: 70px;
+}
+
+.b-b {
+  border-bottom: 1px solid #c5c9ca;
+}
+
+.b-3x {
+  border-width: 4px;
+}
+
+.b-blue {
+  border-color: #00acee;
+}
+
+.hbox {
+  display: table;
+  width: 100%;
+  height: 100%;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+.hbox .col {
+  display: table-cell;
+  float: none;
+  height: 100%;
+  vertical-align: top;
+}
+
+.w-lg {
+  width: 280px;
+}
+
+.w-xs {
+  width: 40px;
+}
+
+.w-sm {
+  width: 70px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.w-xlg {
+  width: 300px;
+}
+
+.v-center {
+  vertical-align: middle !important;
+}
+
+.f-heavy {
+  font-weight: 350;
+  font-size: 20px;
+}
+
+.header-logo {
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
