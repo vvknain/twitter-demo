@@ -15,11 +15,32 @@
 
 .nav-header {
   /* background-color: #00acee; */
-  min-height: 70px;
+  height: 10vh !important;
 }
 
 .b-b {
   border-bottom: 1px solid #c5c9ca;
+}
+
+.b-l {
+  border-left: 1px solid #c5c9ca;
+}
+
+.b-a {
+  border: 1px solid #c5c9ca;
+}
+
+.b-r {
+  border-right: 1px solid #c5c9ca;
+}
+
+.b-v {
+  border-bottom: 1px solid #c5c9ca;
+  border-top: 1px solid #c5c9ca;
+}
+
+.no-b {
+  border: 0px;
 }
 
 .b-3x {
@@ -28,6 +49,75 @@
 
 .b-blue {
   border-color: #00acee;
+}
+
+.txt-color {
+  color: #00acee;
+}
+
+.txt-grey {
+  color: #666666;
+}
+
+.bk-blue {
+  background-color: #6491ec;
+}
+
+.bk-white {
+  background-color: white;
+}
+
+.full-h {
+  height: 90vh;
+}
+
+.h-md {
+  height: 200px;
+}
+
+.h-sm {
+  min-width: 120px;
+}
+
+.h-xs {
+  height: 30px !important;
+}
+
+.twit-row-mar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.profile-pic {
+  margin-top: 38px;
+  border: 1px solid darkgray;
+  width: 200px;
+  height: 200px;
+}
+
+.prf-pic {
+  border: 1px solid darkgray;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+}
+
+.pad-v {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.pad-h {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.pad-t {
+  padding-top: 10px;
+}
+
+.m-b {
+  margin-bottom: 5px;
 }
 
 .hbox {
@@ -74,10 +164,32 @@
   font-size: 20px;
 }
 
+.f-md {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.f-sm {
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.f-xs {
+  font-weight: 400px;
+  font-size: 11px;
+}
+
 .header-logo {
   height: 50px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+}
+
+.box-shadow-lg {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.dis-in {
+  display: block;
+  word-wrap: break-word;
 }
 
 .App-header {
