@@ -44,11 +44,11 @@ export function login_user(payload){
 }
 
 
-export function requestAllTweets() {
+export function requestAllTweets(data, id) {
     return function(dispatch) {
         const tweets = gql`
             {
-            tweets {
+            tweets (user_id: "${data ? id : ""}"){
                 user_id {
                     id
                     full_name

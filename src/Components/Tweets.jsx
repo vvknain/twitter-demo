@@ -11,12 +11,17 @@ class Tweets extends React.Component {
 
         this.state = {
             id: "",
-            clicked: false
+            clicked: false,
+            my_tweets: false
         }
     }
 
     componentWillMount(){
-        this.props.allTweets()
+        this.props.allTweets(this.state.my_tweets, this.props.user._id)
+    }
+
+    handle_check(e) {
+        this.setState({my_tweets: e.target.checked}, () => this.props.allTweets(this.state.my_tweets, this.props.user._id))
     }
 
     list_twits() {
@@ -50,7 +55,11 @@ class Tweets extends React.Component {
                 <div className="row pad-h">
                     <div className="container-fluid">
                         <div className="row text-left m-b m-t">
-                            <span className="f-md">Home</span>
+                            <div className="col-md-2"><span className="f-md">Home</span></div>
+                            <div className="col-md-10 form-check">
+                                <input type="checkbox" className="form-check-input" id="exampleCheck1" onChange={(e) => this.handle_check(e)}/>
+                                <label className="form-check-label" for="exampleCheck1">My Tweets</label>
+                            </div>
                         </div>
                         <CreateTwit 
                             parent_id = {null}
@@ -66,14 +75,15 @@ class Tweets extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        tweets: state.tweets
+        tweets: state.tweets,
+        user: state.user
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        allTweets: () => {
-            dispatch(requestAllTweets())
+        allTweets: (fetch, id) => {
+            dispatch(requestAllTweets(fetch, id))
         }
     }
 }
