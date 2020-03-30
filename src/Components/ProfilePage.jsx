@@ -27,6 +27,7 @@ class ProfilePage extends React.Component {
             full_name: this.state.first_name + " " + this.state.last_name,
             id: this.props.user._id
         })
+        this.props.history.push('/app/home')
     }
 
     is_disabled() {
