@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux'
+import {ApolloProvider} from '@apollo/react-hooks'
+import client from './apollo_client'
+import store from './store/store_config'
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+import App from './App';
+
+
+window.store = store
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

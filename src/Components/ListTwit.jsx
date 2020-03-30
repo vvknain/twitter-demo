@@ -1,13 +1,30 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {increment_like, deleteTweet} from '../action/main_action'
 
 
-export default class CreateTwit extends React.Component {
+class ListTwit extends React.Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            like: 0,
+            clicked: false
+        }
     }
 
-    show_comments() {
-        this.props.show_comments()
+    componentDidMount() {
+        this.setState({like: this.props.tweet.likes})
+    }
+
+    increment_like() {
+        this.props.increment_like(this.props.tweet.id)
+        this.setState({like: this.state.like + 1})
+    }
+
+    enable_reply(id){
+        this.setState({clicked: this.state.clicked ? false : true}, () => this.props.enable_reply(id, this.state.clicked))
     }
 
     render() {
@@ -16,31 +33,33 @@ export default class CreateTwit extends React.Component {
                 <div className="col-md-12 b-a h-sm box-shadow-lg">
                     <div className="row pad-v">
                         <div className="col-md-2">
-                            <img src="twitter_profile.png" className="rounded-circle prf-pic" alt="profile"/>
+                            <img src="/twitter_profile.png" className="rounded-circle prf-pic" alt="profile"/>
                         </div>
                         <div className="col-md-10">
                             <div className="text-left">
-                                <span className="txt-color">{this.props.user && this.props.user.full_name ? this.props.user.full_name : "Vivek Nain"}</span>&nbsp;&nbsp;
-                                <span className="f-xs">{this.props.twit && this.props.twit.timestamp ? this.props.twit.timestamp : "34 mins ago"}</span>
+                                <span className="txt-color">{this.props.tweet ? this.props.tweet.user_id.full_name: "No Name"}</span>&nbsp;&nbsp;
+                                <span className="f-xs">{this.props.tweet ? this.props.tweet.created_at : "5 mins"}</span>
                             </div>
                             <div className="text-left">
-                                <span className="f-sm dis-in">{this.props.twit && this.props.twit.msg ? this.props.twit.msg : "Hello there! this is a sample twit.nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"}</span>
+                                <span className="f-sm dis-in">{this.props.tweet ? this.props.tweet.message : "No mess"}</span>
                             </div>
                             <div className="hbox h-xs">
-                                <div className="col txt-grey cursor v-center" onClick={() => this.show_comments()}>
-                                    <i className="fa fa-comment txt-color"></i>
-                                    <span className="f-sm"> Comments</span>
+                                <div className="col txt-grey cursor v-center" onClick={() => this.enable_reply(this.props.tweet.id)}>
+                                        <i className="fa fa-reply"></i>
+                                        <span className="f-sm"> Reply</span>
                                 </div>
                                 <div className="col txt-grey cursor v-center">
-                                    <i className="fa fa-reply"></i>
-                                    <span className="f-sm"> Reply</span>
+                                    <Link to={`/app/home/user/${this.props.tweet.user_id.id + "/tweet/" + this.props.tweet.id}`} >
+                                        <i className={`fa fa-comment ${this.props.tweet.comments ? "txt-color" : ""}`}></i>&nbsp;
+                                        <span className="f-sm">{this.props.tweet.comments}</span>
+                                    </Link>
                                 </div>
-                                <div className="col txt-grey cursor  v-center">
-                                    <i className="fas fa-heart"></i>
-                                    <span className="f-sm"> Like</span>
+                                <div className="col txt-grey cursor  v-center" onClick={() => this.increment_like()}>
+                                    <i className={`fas fa-heart ${this.state.like ? "txt-red" : ""}`}></i>&nbsp;
+                                    <span className="f-sm">{this.state.like}</span>
                                 </div>
-                                <div className="col txt-grey cursor  v-center">
-                                    <i class="far fa-trash-alt"></i>
+                                <div className="col txt-grey cursor  v-center" onClick={() => this.props.deleteTweet(this.props.tweet.id, this.props.tweet.user_id)}>
+                                    <i className="far fa-trash-alt"></i>
                                     <span className="f-sm"> Delete</span>
                                 </div>
                             </div>
@@ -51,3 +70,24 @@ export default class CreateTwit extends React.Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        increment_like: (data) => {
+            dispatch(increment_like(data))
+        },
+        deleteTweet: (data, user_id) => {
+            dispatch(deleteTweet(data, user_id))
+        }
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ListTwit)

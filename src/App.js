@@ -1,21 +1,22 @@
 import React from 'react';
-import ApolloClient from 'apollo-boost';
-import {ApolloProvider} from 'react-apollo'
 import logo from './logo.svg';
-import './App.css';
-import MainContainer from './Components/MainContainer';
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom'
 
-const  client = new ApolloClient({
-  uri: "localhost:4000/grapghql"
-})
+import './App.css';
+import Navigation from './Components/Navigation'
+import Login from './Components/Login'
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <div className="App">
-          <MainContainer />
-      </div>
-    </ApolloProvider>
+    <div className="App">
+      <Router>
+        <Route path="/" exact component={Login} />
+        <Route path="/app" component={Navigation}/>
+      </Router>
+    </div>
   );
 }
 

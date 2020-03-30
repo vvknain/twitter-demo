@@ -55,6 +55,10 @@
   color: #00acee;
 }
 
+.txt-red {
+  color: #f30202;
+}
+
 .txt-grey {
   color: #666666;
 }
@@ -69,6 +73,10 @@
 
 .full-h {
   height: 90vh;
+}
+
+.h-full {
+  height: 100vh;
 }
 
 .h-md {
@@ -112,12 +120,34 @@
   padding-left: 10px;
 }
 
+.pad-h-login {
+  padding-right: 100px;
+  padding-left: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.pad-h-profile {
+  padding-right: 100px;
+  padding-left: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
 .pad-t {
   padding-top: 10px;
 }
 
 .m-b {
   margin-bottom: 5px;
+}
+
+.m-t {
+  margin-top: 10px;
+}
+
+.m-b-login {
+  margin-bottom: 30px;
 }
 
 .hbox {
@@ -183,6 +213,10 @@
   height: 50px;
 }
 
+.login-logo {
+  height: 300px;
+}
+
 .box-shadow-lg {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05);
 }
@@ -190,6 +224,12 @@
 .dis-in {
   display: block;
   word-wrap: break-word;
+}
+
+.login-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-header {
