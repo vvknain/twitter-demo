@@ -27,6 +27,14 @@ class ListTwit extends React.Component {
         this.setState({clicked: this.state.clicked ? false : true}, () => this.props.enable_reply(id, this.state.clicked))
     }
 
+    deleteTweet(tweet_id, user_id) {
+        if(user_id.id === this.props.user._id){
+            this.props.deleteTweet(tweet_id, user_id)
+        } else {
+            alert("You cannot delete this tweet")
+        }
+    }
+
     render() {
         return (
             <div className="row twit-row-mar">
@@ -58,7 +66,7 @@ class ListTwit extends React.Component {
                                     <i className={`fas fa-heart ${this.state.like ? "txt-red" : ""}`}></i>&nbsp;
                                     <span className="f-sm">{this.state.like}</span>
                                 </div>
-                                <div className="col txt-grey cursor  v-center" onClick={() => this.props.deleteTweet(this.props.tweet.id, this.props.tweet.user_id)}>
+                                <div className="col txt-grey cursor  v-center" onClick={() => this.deleteTweet(this.props.tweet.id, this.props.tweet.user_id)}>
                                     <i className="far fa-trash-alt"></i>
                                     <span className="f-sm"> Delete</span>
                                 </div>
@@ -73,6 +81,7 @@ class ListTwit extends React.Component {
 
 function mapStateToProps(state) {
     return {
+        user: state.user
     }
 }
 
